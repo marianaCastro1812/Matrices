@@ -87,11 +87,27 @@ public class MatricesDispersas {
                  
 
                 case 3:
-                   
+                    
+                 if (T1 != null) {
+               int filas = Integer.parseInt(JOptionPane.showInputDialog("Ingresa una fila"));
+               int sumaF = T1.sumarFilas(filas);
+               JOptionPane.showMessageDialog(null, "La suma de la fila es: " + sumaF);
+        }          
+                 else {
+                JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
+        }
                     break;
 
                 case 4:
-                 
+                    
+                 if (T1 != null) {
+               int columnas = Integer.parseInt(JOptionPane.showInputDialog("Ingresa una columna"));
+               int sumaC = T1.sumarColumnas(columnas);
+               JOptionPane.showMessageDialog(null, "La suma de la columna es: " + sumaC);
+        }          
+                 else {
+                JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
+        }
                     break;
 
                 case 5:

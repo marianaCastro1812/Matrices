@@ -111,6 +111,38 @@ public class Tripleta {
     }
     
     
+    public int sumarFilas(int filas){
+        
+    int sumaF = 0;
+    String proceso = "";
+
+    for (int k = 1; k <= Mtri[0][2]; k++){
+        if (Mtri[k][0] == filas){ 
+            sumaF += Mtri[k][2]; 
+            proceso = proceso + Mtri[k][2] + " , ";
+        }
+    }
+    JOptionPane.showMessageDialog(null, "Numeros sumados: " + proceso +" ");
+    
+    return sumaF;
+}
+    
+    public int sumarColumnas(int columnas){
+        
+    int sumaC = 0;
+    String proceso = "";    
+    
+    for (int k = 1; k <= Mtri[0][2]; k++){
+        if (Mtri[k][1] == columnas){ 
+            sumaC += Mtri[k][2]; 
+            proceso = proceso + Mtri[k][2] + " , ";
+        }
+    }
+    JOptionPane.showMessageDialog(null, "Numeros sumados: " + proceso +" ");
+    
+    return sumaC;
+}
+    
  public void multiplicarTripletas(Tripleta T1){
      
      
