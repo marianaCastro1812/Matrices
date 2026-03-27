@@ -10,26 +10,14 @@ public class MatricesDispersas {
 
     public static void main(String[] args) {
       
-     //int Mat[][]= { {8,0,5,0,3,0},{0,-11,0,0,-2,0},{1,0,0,6,0,19}}; //3x6
-     
+    Tripleta T1 =null;
+     boolean valido = false;
+     int opc=-1;
+     do{
+
    
-     
-     
-     int Mat2 [][]= { {1,3}, {4,6},{1,1},{7,3},{2,2},{5,6}}; //6x2
-     int N2=contarDatos(Mat2);
-     Tripleta T2= new Tripleta(N2);
-     T2.llenarTripleta(Mat2,N2);
-     //T2.multiplicarTripletas(T1);
-    
-    //MENU
-    Tripleta T1 =null; 
-     int opc = 0;
-     
-
-
-        do {
             
-            opc = Integer.parseInt(JOptionPane.showInputDialog(" Menu Principal\n"
+            String opci =JOptionPane.showInputDialog(" Menu Principal\n"
                 + "1. Crear Tripleta\n"
                 + "2. Mostrar Forma\n"
                 + "3. Suma de filas\n"
@@ -40,9 +28,30 @@ public class MatricesDispersas {
                 + "8. Sumar\n"
                 + "9. Multiplicar\n"
                 + "0. Salir\n"
-     
-     
-                + "Ingrese que Forma necesita"));
+                + "Ingrese que Forma necesita");
+            
+            if (opci == null) {
+            JOptionPane.showMessageDialog(null, "Programa finalizado");
+            return;
+        }
+
+        
+        if (opci.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No puedes dejar el campo vacío");
+            continue;
+        }
+        try{
+            opc = Integer.parseInt(opci);
+  
+        }catch
+            (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debes ingresar un número");
+        
+    
+        }
+        
+    
+       
             
             switch (opc) {
                 case 1:
@@ -50,8 +59,8 @@ public class MatricesDispersas {
                     Random r = new Random();
 
 
-                    int f = r.nextInt(5) + 2;      
-                    int c = r.nextInt(5) + 2;   
+                    int f = r.nextInt(5) + 3;      
+                    int c = r.nextInt(5) + 3;   
 
                     int[][] Mat = new int[f][c];
                     for (int i = 0; i < Mat.length; i++) {
@@ -70,6 +79,8 @@ public class MatricesDispersas {
 
                     T1 = new Tripleta(N);
                     T1.llenarTripleta(Mat, N);
+                    JOptionPane.showMessageDialog(null, "La Tripleta nueva se creo Correctamente: ");
+                    T1.mostrar();
                     
              
                     
@@ -77,9 +88,10 @@ public class MatricesDispersas {
 
                 case 2:
                     if (T1 != null){
-            T1.mostrar();
+                    T1.mostrar();
         } else {
             JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
+            
         }
         break;
                     
@@ -95,6 +107,7 @@ public class MatricesDispersas {
         }          
                  else {
                 JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
+               
         }
                     break;
 
@@ -107,19 +120,20 @@ public class MatricesDispersas {
         }          
                  else {
                 JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
+               
         }
                     break;
 
                 case 5:
-                    boolean valido = false;
+                    boolean valido2 = false;
                     if (T1 != null){
-                        while(!valido){
+                        while(!valido2){
                     try {
                         int fila = Integer.parseInt(JOptionPane.showInputDialog("Ingresa una fila"));
                         int columna = Integer.parseInt(JOptionPane.showInputDialog("Ingresa una columna"));
                         int dato = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un dato"));
                         T1.insertar(fila, columna, dato);
-                        valido=true;
+                        valido2=true;
                     } catch (NumberFormatException e) {
                         JOptionPane.showMessageDialog(null, "Debes ingresar números válidos");
                     }
@@ -127,19 +141,77 @@ public class MatricesDispersas {
             
         } else {
             JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
+            
         }
                     
             
                     break;
                     
-                case 0:
-
+                case 6:
+                     if (T1 != null) {
+                     int dato=Integer.parseInt(JOptionPane.showInputDialog("Ingresa el dato a Eliminar"));
+                     T1.EliminarDato(dato);
+                     }else {
+            JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
+           
+        }
+                     break;
+                     case 7:
+                     if (T1 != null) {
+                     int fila2=Integer.parseInt(JOptionPane.showInputDialog("Ingresa la fila del dato que desea borrar"));
+                     int columna2=Integer.parseInt(JOptionPane.showInputDialog("Ingresa la columna del dato que desea borrar"));
+                     T1.EliminarDatopp(fila2, columna2);
+                     }else {
+            JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
+            
+        }
+                     
+                    
                     break;
+                    case 8:
+                        break;
+                        
+                        case 9:
+                            if (T1 != null) {
+                     Random r2 = new Random();
+
+
+                    int f1 = T1.getMtri(0, 1);      
+                    int c1 = r2.nextInt(5) + 3;   
+
+                    int[][] Mat2 = new int[f1][c1];
+                    for (int i = 0; i < Mat2.length; i++) {
+                        for (int j = 0; j < Mat2[i].length; j++) {
+
+                            int prob = r2.nextInt(100);
+
+                            if (prob < 70) {
+                                Mat2[i][j] = 0;
+                            } else {
+                                Mat2[i][j] = r2.nextInt(20) + 1;
+                            }
+                        }
+                    }
+                    N= contarDatos(Mat2);
+
+                    Tripleta T2 = new Tripleta(N);
+                    T2.llenarTripleta(Mat2, N);
+                    JOptionPane.showMessageDialog(null, "La Tripleta 2 se creo Correctamente: ");
+                    T2.mostrar();
+                    T1.multiplicarTripletas(T2);
+                            }else{
+                                JOptionPane.showMessageDialog(null, "Debes Crear Primero la Matriz Original");
+                            }
+                            
+                        break;
+                    case 0:
+                        break;
 
                 default:
                     JOptionPane.showMessageDialog(null, "Esta opcion es invalida");
+                    opc=-1;
             }
-        } while (opc!=0);
+    } while (opc!=0);
     }
     
     public static int contarDatos(int Mat[][]){

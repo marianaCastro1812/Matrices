@@ -42,8 +42,51 @@ public class Tripleta {
                     Mtri[k][2]=Mat[i][j];
                     k++;
                 }
+         
+    }
+               }
+
+    }
+    public void EliminarDatopp(int f,int c){
+        if (( f >= 0 && f < Mtri[0][0])&& (c>=0 && c < Mtri[0][1])){
+            boolean x=false;      
+            for (int i = 1; i < Mtri.length; i++) {
+                if(f==Mtri[i][0]&& c==Mtri[i][1]){
+            
+        
+            int[][] aux = new int[Mtri.length-1][Mtri[0].length];
+
+            aux[0][0] = Mtri[0][0];
+            aux[0][1] = Mtri[0][1];
+            aux[0][2] = Mtri[0][2]-1;
+
+            int j = 1;
+            for (int k = 1; k < Mtri.length; k++) {
+                if (!(f == Mtri[k][0] && c == Mtri[k][1])) {
+                    aux[j][0] = Mtri[k][0];
+                    aux[j][1] = Mtri[k][1];
+                    aux[j][2] = Mtri[k][2];
+                    j++;
+                }
+                    
+                }
+            Mtri=aux;
+            x=true;
+            JOptionPane.showMessageDialog(null, "El dato en la posicion "+ f +" ,"+c+" se elimino correctamente \n"
+            + " Seleccione Mostrar para ver la nueva Tripleta");
             }
+                
+            }
+            if (!x) {
+                JOptionPane.showMessageDialog(null,"Esta Posicion no se encuentra en la Tripleta");
+                
+            }
+
+        
+        }else{
+             JOptionPane.showMessageDialog(null," La fila "+ f + " y la columna " + c + " no estan en la Tripleta");
         }
+        
     }
     
     public void insertar(int f, int c, int d){
@@ -97,7 +140,7 @@ public class Tripleta {
         
             
       } else{
-            JOptionPane.showInputDialog(" La fila "+f + " y la columna" + c + "no se pueden agregar a la Tripleta");
+            JOptionPane.showMessageDialog(null," La fila "+f + " y la columna" + c + "no se pueden agregar a la Tripleta");
         }
     }
         
@@ -142,10 +185,138 @@ public class Tripleta {
     
     return sumaC;
 }
+    public void EliminarDato(int d){
+        boolean x=false;
+        for (int i = 0; i < Mtri.length; i++) {
+            if(Mtri[i][2]==d){
+                x=true;
+                break;
+            }
+            
+        }
+        if (x) {
+            
+        
+        int cont=0;
+         for (int i = 1; i < Mtri.length; i++) {
+        if (Mtri[i][2] != d) {
+            cont++;
+        }
+    }
+
+   
+    int[][] aux = new int[cont + 1][Mtri[0].length];
+
+  
+    aux[0][0] = Mtri[0][0];
+    aux[0][1] = Mtri[0][1];
+    aux[0][2] = cont;
+
+
+    int j = 1;
+    for (int i = 1; i < Mtri.length; i++) {
+        if (Mtri[i][2] != d) {
+            aux[j][0] = Mtri[i][0];
+            aux[j][1] = Mtri[i][1];
+            aux[j][2] = Mtri[i][2];
+            
+            j++;
+        }
+    }
+
+    Mtri = aux;
+    JOptionPane.showMessageDialog(null, "El dato "+ d +" se elimino correctamente \n"
+            + " Seleccione Mostrar para verla nueva Tripleta");
     
- public void multiplicarTripletas(Tripleta T1){
-     
-     
- }   
+}else{
+            JOptionPane.showMessageDialog(null, "Este dato no existe");
+        }
+    }
     
+
+  
+    
+ public void multiplicarTripletas(Tripleta T2){
+      if (this.Mtri[0][1] !=T2.Mtri[0][0]) {
+        JOptionPane.showMessageDialog(null, "No se pueden multiplicar");
+        return;
+    }else{
+
+    int filas = this.Mtri[0][0];
+    int columnas = T2.Mtri[0][1];
+
+    int[][] resultado = new int[filas][columnas];
+      for (int i = 1; i < this.Mtri.length; i++) {
+
+        int fila1 = this.Mtri[i][0];
+        int columna1= this.Mtri[i][1];
+        int dato1 = this.Mtri[i][2];
+
+        for (int j = 1; j < T2.Mtri.length; j++) {
+
+            int fila2 = T2.Mtri[j][0];
+            int columna2 = T2.Mtri[j][1];
+            int dato2 = T2.Mtri[j][2];
+
+            if (columna1 == fila2) {
+                resultado[fila1][columna2] += dato1 * dato2;
+            }
+        }
+    }
+      
+
+      int N= MatricesDispersas.contarDatos(resultado);
+      Tripleta t=new Tripleta(N);
+      t.llenarTripleta(resultado,N);
+      JOptionPane.showMessageDialog(null, "Las matrices Multiplicadas fueron las siguientes:");
+      this.mostrarComoMatriz();
+      T2.mostrarComoMatriz();
+      JOptionPane.showMessageDialog(null, "El resultado seria: ");
+      t.mostrar();
+            int opcion = JOptionPane.showConfirmDialog(
+                    null,
+                    "¿Deseas reemplazar la tripleta original?",
+                    "Confirmación",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (opcion == JOptionPane.YES_OPTION) {
+                this.Mtri = t.Mtri;
+            } else {
+               JOptionPane.showMessageDialog(null, "Para ver la Matriz Original presiona mostrar");
+            }
+        }
+
+    }
+ public void mostrarComoMatriz() {
+
+    int filas = Mtri[0][0];
+    int columnas = Mtri[0][1];
+
+    int[][] matriz = new int[filas][columnas];
+
+    for (int i = 1; i < Mtri.length; i++) {
+        int f = Mtri[i][0];
+        int c = Mtri[i][1];
+        int v = Mtri[i][2];
+
+        matriz[f][c] = v;
+    }
+
+   
+    String salida = "";
+
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            salida += String.format("%4d", matriz[i][j]);
+        }
+        salida += "\n";
+    }
+
+    JOptionPane.showMessageDialog(null, salida);
 }
+
+ }  
+
+    
+
