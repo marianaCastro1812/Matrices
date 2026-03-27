@@ -15,7 +15,7 @@ public class MatricesDispersas {
      int opc=-1;
      do{
 
-   
+        // ERRORES: Ingreso un numero seguido de un string, hace el metodo
             
             String opci =JOptionPane.showInputDialog(" Menu Principal\n"
                 + "1. Crear Tripleta\n"

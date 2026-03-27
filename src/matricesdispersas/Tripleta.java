@@ -1,11 +1,11 @@
-//
+
 package matricesdispersas;
 
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Maria
+ * @author Mariana Castro, Miguel Gallo y Gepetto
  */
 public class Tripleta {
     //Atributos
