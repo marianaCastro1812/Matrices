@@ -22,9 +22,15 @@ public class Tripleta {
     public int getMtri(int k, int i) {
         return Mtri[k][i];
     }
+     public int[][] getMtric() {
+        return Mtri;
+    }
 
     public void setMtri(int k, int i, int d) {
         Mtri[k][i] = d;
+    }
+    public void setMtric(int Mtri[][]) {
+        this.Mtri = Mtri;
     }
     
     public void llenarTripleta(int Mat[][],int N){
@@ -162,7 +168,10 @@ public class Tripleta {
     for (int k = 1; k <= Mtri[0][2]; k++){
         if (Mtri[k][0] == filas){ 
             sumaF += Mtri[k][2]; 
-            proceso = proceso + Mtri[k][2] + " , ";
+            if (!proceso.isEmpty()) {
+            proceso += ", ";
+        }
+            proceso = proceso + Mtri[k][2];
         }
     }
     JOptionPane.showMessageDialog(null, "Numeros sumados: " + proceso +" ");
@@ -178,7 +187,10 @@ public class Tripleta {
     for (int k = 1; k <= Mtri[0][2]; k++){
         if (Mtri[k][1] == columnas){ 
             sumaC += Mtri[k][2]; 
-            proceso = proceso + Mtri[k][2] + " , ";
+            if (!proceso.isEmpty()) {
+            proceso += ", ";
+        }
+            proceso = proceso + Mtri[k][2] ;
         }
     }
     JOptionPane.showMessageDialog(null, "Numeros sumados: " + proceso +" ");
@@ -239,8 +251,8 @@ public Tripleta sumarTripletas(Tripleta T2) {
     int j = 1; 
     int k = 1;
 
-    int tamaño = this.Mtri[0][2] + T2.Mtri[0][2];
-    Tripleta resultado = new Tripleta(tamaño);
+    int tam = this.Mtri[0][2] + T2.Mtri[0][2];
+    Tripleta resultado = new Tripleta(tam);
 
     resultado.Mtri[0][0] = this.Mtri[0][0];
     resultado.Mtri[0][1] = this.Mtri[0][1];
@@ -350,7 +362,7 @@ public Tripleta sumarTripletas(Tripleta T2) {
             if (opcion == JOptionPane.YES_OPTION) {
                 this.Mtri = t.Mtri;
             } else {
-               JOptionPane.showMessageDialog(null, "Para ver la Matriz Original presiona mostrar");
+               JOptionPane.showMessageDialog(null, "Para ver la Matriz Original Seleccione mostrar");
             }
         }
 

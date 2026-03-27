@@ -189,7 +189,7 @@ public class MatricesDispersas {
                     break;
                     
                     case 8:
-
+                    if (T1 != null) {
                     Random r3 = new Random();
                     int f2 = T1.getMtri(0, 0);
                     int c2 = T1.getMtri(0, 1);
@@ -213,7 +213,7 @@ public class MatricesDispersas {
                     JOptionPane.showMessageDialog(null, "La Tripleta 2 se creo Correctamente: ");
                     T3.mostrar();
 
-                    if (T1 != null) {
+                    
 
                         JOptionPane.showMessageDialog(null, "TRIPLETA 1:");
                         T1.mostrar();
@@ -225,6 +225,18 @@ public class MatricesDispersas {
 
                         JOptionPane.showMessageDialog(null, "Resultado de la suma:");
                         resultado.mostrar();
+                         int opcion = JOptionPane.showConfirmDialog(
+                    null,
+                    "¿Deseas reemplazar la tripleta original?",
+                    "Confirmación",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (opcion == JOptionPane.YES_OPTION) {
+                T1.setMtric(resultado.getMtric());
+            } else {
+               JOptionPane.showMessageDialog(null, "Para ver la Matriz Original Seleccione mostrar");
+            }
 
                     } else {
                         JOptionPane.showMessageDialog(null, "Primero debes crear la matriz T1");
