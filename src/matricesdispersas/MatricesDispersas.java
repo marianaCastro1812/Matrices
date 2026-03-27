@@ -100,29 +100,48 @@ public class MatricesDispersas {
 
                 case 3:
                     
-                 if (T1 != null) {
-               int filas = Integer.parseInt(JOptionPane.showInputDialog("Ingresa una fila"));
-               int sumaF = T1.sumarFilas(filas);
-               JOptionPane.showMessageDialog(null, "La suma de la fila es: " + sumaF);
-        }          
-                 else {
-                JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
-               
-        }
+                    boolean valido1 = false;
+
+                    if (T1 != null) {
+                        while (!valido1) {
+                            try {
+                                int filas = Integer.parseInt(JOptionPane.showInputDialog("Ingresa una fila"));
+                                int sumaF = T1.sumarFilas(filas);
+                                JOptionPane.showMessageDialog(null, "La suma de la fila es: " + sumaF);
+                                valido1 = true;
+                            } catch (NumberFormatException e) {
+                                JOptionPane.showMessageDialog(null, "Debes ingresar números válidos");
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
+                    }
+
                     break;
 
                 case 4:
-                    
-                 if (T1 != null) {
-               int columnas = Integer.parseInt(JOptionPane.showInputDialog("Ingresa una columna"));
-               int sumaC = T1.sumarColumnas(columnas);
-               JOptionPane.showMessageDialog(null, "La suma de la columna es: " + sumaC);
-        }          
-                 else {
-                JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
-               
-        }
+
+                    boolean valido3 = false;
+
+                    if (T1 != null) {
+                        while (!valido3) {
+                            try {
+                                int columnas = Integer.parseInt(JOptionPane.showInputDialog("Ingresa una columna"));
+                                int sumaC = T1.sumarColumnas(columnas);
+                                JOptionPane.showMessageDialog(null, "La suma de la columna es: " + sumaC);
+                                valido3 = true;
+                            } catch (NumberFormatException e) {
+                                JOptionPane.showMessageDialog(null, "Debes ingresar números válidos");
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Primero debes crear la Matriz");
+                    }
+
                     break;
+
+
+
 
                 case 5:
                     boolean valido2 = false;
@@ -166,11 +185,56 @@ public class MatricesDispersas {
             
         }
                      
-                    
+                 
                     break;
+                    
                     case 8:
-                        break;
-                        
+
+                    Random r3 = new Random();
+                    int f2 = T1.getMtri(0, 0);
+                    int c2 = T1.getMtri(0, 1);
+
+                    int[][] MatB = new int[f2][c2];
+
+                    for (int i = 0; i < f2; i++) {
+                        for (int j = 0; j < c2; j++) {
+                            if (r3.nextInt(100) < 70) {
+                                MatB[i][j] = 0;
+                            } else {
+                                MatB[i][j] = r3.nextInt(20) + 1;
+                            }
+                        }
+                    }
+
+                    int N2 = contarDatos(MatB);
+
+                    Tripleta T3 = new Tripleta(N2);
+                    T3.llenarTripleta(MatB, N2);
+                    JOptionPane.showMessageDialog(null, "La Tripleta 2 se creo Correctamente: ");
+                    T3.mostrar();
+
+                    if (T1 != null) {
+
+                        JOptionPane.showMessageDialog(null, "TRIPLETA 1:");
+                        T1.mostrar();
+
+                        JOptionPane.showMessageDialog(null, "TRIPLETA 2:");
+                        T3.mostrar();
+
+                        Tripleta resultado = T1.sumarTripletas(T3);
+
+                        JOptionPane.showMessageDialog(null, "Resultado de la suma:");
+                        resultado.mostrar();
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Primero debes crear la matriz T1");
+                    }
+                    break;
+                       
+                    
+                    
+                    
+                    
                         case 9:
                             if (T1 != null) {
                      Random r2 = new Random();

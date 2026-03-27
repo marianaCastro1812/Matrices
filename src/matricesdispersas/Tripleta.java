@@ -233,7 +233,74 @@ public class Tripleta {
         }
     }
     
+public Tripleta sumarTripletas(Tripleta T2) {
 
+    int i = 1;
+    int j = 1; 
+    int k = 1;
+
+    int tamaño = this.Mtri[0][2] + T2.Mtri[0][2];
+    Tripleta resultado = new Tripleta(tamaño);
+
+    resultado.Mtri[0][0] = this.Mtri[0][0];
+    resultado.Mtri[0][1] = this.Mtri[0][1];
+
+    while (i <= this.Mtri[0][2] && j <= T2.Mtri[0][2]) {
+
+        int f1 = this.Mtri[i][0];
+        int c1 = this.Mtri[i][1];
+        int d1 = this.Mtri[i][2];
+
+        int f2 = T2.Mtri[j][0];
+        int c2 = T2.Mtri[j][1];
+        int d2 = T2.Mtri[j][2];
+
+        
+        if (f1 == f2 && c1 == c2) {
+            resultado.Mtri[k][0] = f1;
+            resultado.Mtri[k][1] = c1;
+            resultado.Mtri[k][2] = d1 + d2;
+            i++; 
+            j++; 
+            k++;
+        }
+        
+        else if (f1 < f2 || (f1 == f2 && c1 < c2)) {
+            resultado.Mtri[k][0] = f1;
+            resultado.Mtri[k][1] = c1;
+            resultado.Mtri[k][2] = d1;
+            i++; 
+            k++;
+        }
+       
+        else {
+            resultado.Mtri[k][0] = f2;
+            resultado.Mtri[k][1] = c2;
+            resultado.Mtri[k][2] = d2;
+            j++; 
+            k++;
+        }
+    }
+
+   
+    while (i <= this.Mtri[0][2]) {
+        resultado.Mtri[k][0] = this.Mtri[i][0];
+        resultado.Mtri[k][1] = this.Mtri[i][1];
+        resultado.Mtri[k][2] = this.Mtri[i][2];
+        i++; k++;
+    }
+
+    while (j <= T2.Mtri[0][2]) {
+        resultado.Mtri[k][0] = T2.Mtri[j][0];
+        resultado.Mtri[k][1] = T2.Mtri[j][1];
+        resultado.Mtri[k][2] = T2.Mtri[j][2];
+        j++; k++;
+    }
+
+    resultado.Mtri[0][2] = k - 1;
+
+    return resultado;
+}
   
     
  public void multiplicarTripletas(Tripleta T2){
