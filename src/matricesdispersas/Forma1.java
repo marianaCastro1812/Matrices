@@ -77,8 +77,31 @@ public class Forma1 {
     private void Paso3(int Mat[][]){
         
         Nodo rc=Punta.getLiga();
-        Nodo a=rc;
-        Nodo p=Punta.getLiga();
+        
+       
+        
+        
+        while(rc!=Punta){
+             Nodo a=rc;
+             Nodo p=Punta.getLiga();
+            while(p!=Punta){
+                Nodo q=p.getLigaFila();
+                while(q!=p){
+                    if(rc.getColumna()==q.getColumna()){
+                       a.setLigaColumna(q);
+                       a=q;
+                    }
+                    q=q.getLigaFila();
+                    
+                }
+                p=p.getLiga();
+                
+            }
+            rc=rc.getLiga();
+            
+            
+            
+        }
         
     }
     
