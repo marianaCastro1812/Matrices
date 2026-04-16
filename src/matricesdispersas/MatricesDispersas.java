@@ -27,6 +27,8 @@ public class MatricesDispersas {
                 + "7. Eliminar Dato por Posicion\n"
                 + "8. Sumar\n"
                 + "9. Multiplicar\n"
+                + "10. Forma 1\n"
+                + "11. Forma 2\n"   
                 + "0. Salir\n"
                 + "Ingrese que Forma necesita");
             
@@ -280,6 +282,14 @@ public class MatricesDispersas {
                             }
                             
                         break;
+                        case 10:
+                            Forma1 F1=null;
+                            F1.Menu();
+                            break;
+                            case 11:
+//                            Forma2 F2=null;
+//                            F2.Menu();
+                            break;
                     case 0:
                         break;
 

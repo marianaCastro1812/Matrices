@@ -1,6 +1,8 @@
 
 package matricesdispersas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mariana Castro  y Miguel Angel Mejia Gallo
@@ -18,6 +20,52 @@ public class Forma1 {
 
     public void setPunta(Nodo Punta) {
         this.Punta = Punta;
+    }
+    public void Menu(){
+         Tripleta T1 =null;
+     boolean valido = false;
+     int opc=-1;
+     do{
+
+        // ERRORES: Ingreso un numero seguido de un string, hace el metodo
+            
+            String opci =JOptionPane.showInputDialog(" Menu Principal\n"
+                + "1. Crear Matriz en Forma 1\n"
+                + "2. Mostrar Forma\n"
+                + "3. Suma de filas\n"
+                + "4. Suma de columnas\n"
+                + "5. Insertar Dato \n"
+                + "6. Eliminar Dato\n"
+                + "7. Eliminar Dato por Posicion\n"
+                + "8. Sumar\n"
+                + "9. Multiplicar\n"  
+                + "0. Salir\n"
+                + "Ingrese que Forma necesita");
+            
+            if (opci == null) {
+            JOptionPane.showMessageDialog(null, "Programa finalizado");
+            return;
+        }
+
+        
+        if (opci.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No puedes dejar el campo vacío");
+            continue;
+        }
+        try{
+            opc = Integer.parseInt(opci);
+  
+        }catch
+            (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Debes ingresar un número");
+        
+    
+        }
+        
+            switch (opc) {
+            } 
+            }while(opc!=0);
+            
     }
     public void MostrarEstructura(){
     Nodo rc = Punta.getLiga();
