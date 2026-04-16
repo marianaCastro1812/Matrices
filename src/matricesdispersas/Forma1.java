@@ -19,6 +19,77 @@ public class Forma1 {
     public void setPunta(Nodo Punta) {
         this.Punta = Punta;
     }
+    public void MostrarEstructura(){
+    Nodo rc = Punta.getLiga();
+
+    System.out.println("Punta");
+    System.out.println("  ↓");
+
+    while (rc != Punta) {
+
+     
+        System.out.print("[" + rc.getFila() + "] → ");
+
+     
+        Nodo p = rc.getLigaFila();
+
+        while (p != rc) {
+            System.out.print("(" + p.getFila() + "," + p.getColumna() + "," + p.getDato() + ") → ");
+            p = p.getLigaFila();
+        }
+
+        System.out.println("⟳");
+
+
+        System.out.println("  ↓");
+
+        rc = rc.getLiga();
+    }
+
+    System.out.println(" ⟳ (regresa a Punta)");
+}
+    public void Insertar(int f, int c, int d){
+      Nodo nuevo=new Nodo(f,c,d);
+        if ((f<Punta.getFila()&& f>=0)&&(c<Punta.getColumna())&&c>=0) {
+            Nodo rc=Punta.getLiga();
+            while(rc.getFila()!=nuevo.getFila()){
+                rc=rc.getLiga();
+            }
+            Nodo p=rc.getLigaFila();
+            Nodo a=rc;
+            while(p!=rc && p.getColumna()<nuevo.getColumna()){
+                a=p;
+                p=p.getLigaFila();
+            }
+             if (p != rc && p.getColumna() == nuevo.getColumna()) {
+            p.setDato(d);
+            return;
+        }
+            a.setLigaFila(nuevo);
+            nuevo.setLigaFila(p);
+            
+            //ligar Columna
+            Nodo cc=Punta.getLiga();
+            while(cc.getColumna()!=nuevo.getColumna()){
+                cc=cc.getLiga();
+            }
+            p = cc.getLigaColumna();
+            a = cc;
+
+            while (p != cc && p.getFila() < nuevo.getFila()) {
+                a = p;
+                p = p.getLigaColumna();
+            }
+
+            nuevo.setLigaColumna(p);
+            a.setLigaColumna(nuevo);
+        }
+        
+        
+    }
+    public void sumar(){
+        
+    }
     
     public void LlenarMD(int Mat[][]){
         Paso1(Mat.length,Mat[0].length);
