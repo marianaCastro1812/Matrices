@@ -417,29 +417,42 @@ public class Forma2 {
 
     public void eliminarPosicion(int i, int j){
 
+       
         Nodo ant = Punta;
         Nodo act = Punta.getLigaFila();
-
+       boolean encontrado= false;
+        
         while (act != Punta){
             if (act.getFila()==i && act.getColumna()==j){
                 ant.setLigaFila(act.getLigaFila());
-                break;
+                encontrado=true;
+              break;
             }
             ant = act;
             act = act.getLigaFila();
         }
-
+        
+        if (encontrado==false){
+            JOptionPane.showMessageDialog(null, "En la posicion no hay dato");
+        }
+        
         ant = Punta;
         act = Punta.getLigaColumna();
 
         while (act != Punta){
             if (act.getFila()==i && act.getColumna()==j){
                 ant.setLigaColumna(act.getLigaColumna());
+                encontrado=true;
                 break;
+                
             }
             ant = act;
             act = act.getLigaColumna();
+            
         }
+        
+       
+        
     }
     
     public Forma2 sumar(Forma2 B){
@@ -498,6 +511,7 @@ public Forma2 multiplicar(Forma2 B){
 
         p = p.getLigaFila();
     }
+    this.Punta=R.Punta;
 
     return R;
 }

@@ -84,7 +84,19 @@ public class Forma1 {
                     this.Mostrar();
                     break;
                 case 2:
+                    valido = false;
+                    if (Punta != null) {
+                        while (!valido) {
+                            try {
                     this.Mostrar();
+                      valido = true;
+                            } catch (NumberFormatException e) {
+                                JOptionPane.showMessageDialog(null, "Debes ingresar números válidos");
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Primero debes crear la Lista");
+                    }
                     break;
                 case 3:
                     valido = false;
