@@ -28,7 +28,8 @@ public class MatricesDispersas {
                 + "8. Sumar\n"
                 + "9. Multiplicar\n"
                 + "10. Forma 1\n"
-                + "11. Forma 2\n"   
+                + "11. Forma 2\n"
+                + "12. F1 * F2 = Tripleta\n"
                 + "0. Salir\n"
                 + "Ingrese que Forma necesita");
             
@@ -289,6 +290,38 @@ public class MatricesDispersas {
                 case 11:
                     Forma2 F2 = new Forma2();
                     F2.Menu();
+                    break;
+                case 12:
+                    Forma1 F1m=new Forma1();
+                     r = new Random();
+
+                     f = r.nextInt(5) + 3;
+                     c = r.nextInt(5) + 3;
+
+                    int[][] Mat2 = new int[f][c];
+                    for (int i = 0; i < Mat2.length; i++) {
+                        for (int j = 0; j < Mat2[i].length; j++) {
+
+                            int prob = r.nextInt(100);
+
+                            if (prob < 70) {
+                                Mat2[i][j] = 0;
+                            } else {
+                                Mat2[i][j] = r.nextInt(20) + 1;
+                            }
+                        }
+                    }
+                    F1m.LlenarMD(Mat2);
+                    JOptionPane.showMessageDialog(null, "Forma 1=");
+                    F1m.Mostrar();
+                    Forma2 F2m=new Forma2();
+                    Nodo p=F1m.getPunta();
+                    F2m.crearm(p.getColumna());
+                    JOptionPane.showMessageDialog(null, "Forma 2=");
+                    F2m.MostrarForma();
+                    JOptionPane.showMessageDialog(null, "Resultado=");
+                    Tripleta.MultiplicarListas(F1m, F2m);
+                          
                     break;
                 case 0:
                         break;
