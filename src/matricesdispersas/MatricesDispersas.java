@@ -283,7 +283,7 @@ public class MatricesDispersas {
                             
                         break;
                         case 10:
-                            Forma1 F1=null;
+                            Forma1 F1=new Forma1();
                             F1.Menu();
                             break;
                             case 11:
