@@ -53,6 +53,29 @@ public class Tripleta {
                }
 
     }
+    public static void MultiplicarListas(Forma1 ob,Forma2 ob2) {
+        int[][] A = ob.ListaAMatriz();
+        int[][] B = ob2.Forma2aMatriz();
+        int n = A.length;
+        int m = B[0].length;
+        int p = B.length;
+
+        int[][] R = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                for (int k = 0; k < p; k++) {
+                    R[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+        int N=MatricesDispersas.contarDatos(R);
+        Tripleta resultado=new Tripleta(N);
+        resultado.llenarTripleta(R, N);
+        resultado.mostrar();
+           
+
+    }
     public void EliminarDatopp(int f,int c){
         if (( f >= 0 && f < Mtri[0][0])&& (c>=0 && c < Mtri[0][1])){
             boolean x=false;      

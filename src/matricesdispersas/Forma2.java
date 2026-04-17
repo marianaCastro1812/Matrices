@@ -59,6 +59,7 @@ public class Forma2 {
 
             case 1:
                 crear();
+                this.MostrarForma();
                 creada = true;
                 break;
 
@@ -233,6 +234,27 @@ public class Forma2 {
 
     }while(opc!=0);
 }
+     public void crearm(int columna){
+    Random r = new Random();
+
+    int f = columna;
+    int c = r.nextInt(5)+3;
+
+    Punta.setFila(f);
+    Punta.setColumna(c);
+
+    Punta.setLigaFila(Punta);
+    Punta.setLigaColumna(Punta);
+
+    for (int i = 0; i < f; i++) {
+        for (int j = 0; j < c; j++) {
+            if (r.nextInt(100) >= 70){
+                Insertar(i,j,r.nextInt(20)+1);
+            }
+        }
+    }
+     }
+
 
     public void crear(){
     Random r = new Random();
@@ -255,6 +277,23 @@ public class Forma2 {
     }
 
     JOptionPane.showMessageDialog(null, "Matriz creada");
+    }
+    public int[][] Forma2aMatriz(){
+
+    int n = Punta.getFila();
+    int m = Punta.getColumna();
+
+    int[][] mat = new int[n][m];
+
+    Nodo p = Punta.getLigaFila();
+
+    while(p != Punta){
+        mat[p.getFila()][p.getColumna()] = p.getDato();
+        p = p.getLigaFila();
+    }
+
+    return mat;
+
 }
  
     public void Insertar(int f, int c, int dt){
