@@ -286,11 +286,11 @@ public class MatricesDispersas {
                             Forma1 F1=new Forma1();
                             F1.Menu();
                             break;
-                            case 11:
-//                            Forma2 F2=null;
-//                            F2.Menu();
-                            break;
-                    case 0:
+                case 11:
+                    Forma2 F2 = new Forma2();
+                    F2.Menu();
+                    break;
+                case 0:
                         break;
 
                 default:
