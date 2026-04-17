@@ -238,7 +238,7 @@ public class Tripleta {
 
     Mtri = aux;
     JOptionPane.showMessageDialog(null, "El dato "+ d +" se elimino correctamente \n"
-            + " Seleccione Mostrar para verla nueva Tripleta");
+            + " Seleccione Mostrar para ver la nueva Tripleta");
     
 }else{
             JOptionPane.showMessageDialog(null, "Este dato no existe");
